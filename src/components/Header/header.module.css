@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+}
+.headerContainer {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 120px;
+  border-bottom: 1px solid #f2f4f7;
+  background: #f2f4f7;
+  font-size: 16px;
+
+  line-height: 1.25;
+}
+.navigation {
+  display: flex;
+  gap: 32px;
+}
+
+/* color: var(--button-hover, #0B44CD);
+text-align: center;
+
+/* body */
+/* font-family: Manrope;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; 125% */
