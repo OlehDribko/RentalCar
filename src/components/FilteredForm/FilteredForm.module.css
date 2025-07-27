@@ -1,0 +1,51 @@
+/* container */
+.form {
+  display: flex;
+}
+/* сontroled elements */
+.mileageBox {
+  display: flex;
+  gap: 8px;
+}
+.mileageItem {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.label {
+  margin-right: 4px;
+  color: #555;
+}
+.input {
+  border: none;
+  background: transparent;
+  width: 80px;
+}
+
+/* select */
+.select {
+  width: 200px;
+  height: 48px;
+  padding: 0 40px 0 16px;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #121417;
+  appearance: none;
+  background-image: url("../../../public/chevron.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 16px) center;
+  cursor: pointer;
+}
+.select:focus {
+  border-color: #3470ff;
+  outline: none;
+}
+.select option:first-child {
+  color: #8a8a89;
+}
+.selectList {
+}
