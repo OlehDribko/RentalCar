@@ -50,15 +50,27 @@ export default function FilteredForm() {
         <div className={css.mileageBox}>
           <div className={css.mileageItem}>
             <span className={css.label}>From</span>
-            <Field type="number" name="minMileage" className={css.input} />
+            <Field
+              type="number"
+              name="minMileage"
+              min="0"
+              className={css.input}
+            />
           </div>
           <div className={css.mileageItem}>
             <span className={css.label}>To</span>
-            <Field type="number" name="maxMileage" className={css.input} />
+            <Field
+              type="number"
+              name="maxMileage"
+              min="0"
+              className={css.input}
+            />
           </div>
         </div>
 
-        <button type="submit">Search</button>
+        <button className={css.searchBtn} type="submit">
+          Search
+        </button>
       </Form>
     </Formik>
   );
