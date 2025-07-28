@@ -1,21 +1,24 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./App.css";
-import Header from "./components/Header/Header.jsx";
-import Hero from "./components/Hero/Hero.jsx";
-import FilteredForm from "./components/FilteredForm/FilteredForm.jsx";
+
+import { fetchCar } from "./redux/operations.js";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import Catalog from "./pages/Catalog/Catalog.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  useEffect(() => {}, [dispatch]);
 
   return (
     <>
-      <div className="main-container">
-        <Header />
-        <FilteredForm />
-        <Hero />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/catalog" element={<Catalog />} />
+      </Routes>
+      <div className="main-container"></div>
     </>
   );
 }

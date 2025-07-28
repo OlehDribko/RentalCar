@@ -13,12 +13,7 @@ export default function Header() {
           <NavLink to="/home">Home</NavLink>
           <NavLink to="/catalog">Catalog</NavLink>
         </nav>
-        {/* <Routes>
-  <Route path="/" element={<p></p>} />
-  <Route path="/" element={<p></p>} />
-  <Route path="/catalog" element={<p></p>} />
-    </Routes>
-     */}
+       
       </div>
     </header>
   );
