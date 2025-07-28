@@ -18,7 +18,11 @@ export default function CustomSelect({
     <div className={css.wrapper}>
       {/* Head */}
       <div className={css.header} onClick={() => setIsOpen((prev) => !prev)}>
-        <span>{value || placeholder}</span>
+        <span>
+          {value
+            ? `${placeholder.includes("price") ? "To $" + value : value}`
+            : placeholder}
+        </span>
         <img
           src={arrowIcon}
           alt="arrow"

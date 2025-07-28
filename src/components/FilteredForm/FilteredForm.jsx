@@ -1,24 +1,51 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, useField } from "formik";
 import { useEffect, useState } from "react";
 import css from "./FilteredForm.module.css";
 import api from "../../api/axiosInstance.js";
 import CustomSelect from "../CustomSelect/CustomSelect.jsx";
+import { formatNumber } from "../../utils/formatNumber.js";
+
+// КАСТОМНИЙ ІНПУТ З ФОРМАТУВАННЯМ
+function FormattedNumberField({ label, ...props }) {
+  const [field, , helpers] = useField(props);
+
+  const handleChange = (e) => {
+    const rawValue = e.target.value.replace(/,/g, "");
+    const numericValue = rawValue.replace(/[^\d]/g, "");
+    helpers.setValue(numericValue);
+  };
+
+  return (
+    <div className={css.mileageItem}>
+      <span className={css.label}>{label}</span>
+      <input
+        {...field}
+        {...props}
+        value={formatNumber(field.value)}
+        onChange={handleChange}
+        className={css.input}
+        inputMode="numeric"
+        min="0"
+      />
+    </div>
+  );
+}
 
 export default function FilteredForm() {
   const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
+
   useEffect(() => {
-    async function facthCars() {
+    async function fetchCars() {
       try {
         const response = await api.get("/cars");
         setCars(response.data.cars);
       } catch (error) {
-        console.log(error.massage);
+        console.log(error.message);
       }
     }
-    facthCars();
+    fetchCars();
   }, []);
 
   const uniqueBrands = [...new Set(cars.map((car) => car.brand))];
@@ -32,7 +59,9 @@ export default function FilteredForm() {
         minMileage: "",
         maxMileage: "",
       }}
-      onSubmit={() => {}}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
       <Form className={css.form}>
         <CustomSelect
@@ -48,24 +77,8 @@ export default function FilteredForm() {
           onChange={setPrice}
         />
         <div className={css.mileageBox}>
-          <div className={css.mileageItem}>
-            <span className={css.label}>From</span>
-            <Field
-              type="number"
-              name="minMileage"
-              min="0"
-              className={css.input}
-            />
-          </div>
-          <div className={css.mileageItem}>
-            <span className={css.label}>To</span>
-            <Field
-              type="number"
-              name="maxMileage"
-              min="0"
-              className={css.input}
-            />
-          </div>
+          <FormattedNumberField name="minMileage" label="From" />
+          <FormattedNumberField name="maxMileage" label="To" />
         </div>
 
         <button className={css.searchBtn} type="submit">

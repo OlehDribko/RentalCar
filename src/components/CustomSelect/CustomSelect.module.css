@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  width: 260px;
+  width: 204px;
   font-family: inherit;
 }
 
@@ -13,7 +13,7 @@
   border-radius: 12px;
   background: #f8f9fa;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #1c1c1c;
   cursor: pointer;
   user-select: none;
@@ -42,13 +42,17 @@
 
 .item {
   padding: 8px 16px;
+  color: #8d929a;
+
   font-size: 16px;
-  color: #333;
+
+  font-weight: 500;
+  line-height: 1.2;
   cursor: pointer;
 }
 
 .item:hover {
-  background: #f0f0f0;
+  color: #101828;
 }
 
 /* icons */
