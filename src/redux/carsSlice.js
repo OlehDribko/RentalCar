@@ -1,26 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCar } from "./operations";
+import { fetchCars } from "./operations";
 
 const carsSlice = createSlice({
-  name: "car",
+  name: "cars",
   initialState: {
     items: [],
+    totalCars: 0,
+    totalPages: 1,
+    page: 1,
     isLoading: false,
     error: null,
   },
 
-  extraRedusers: (builder) => {
-    builder.addCase(fetchCar.pending, (state, action) => {
-      state.isLoadin = true;
-    });
-    addCase(fetchCar.fulfilled, (state, action) => {
-      state.isLoadin = false;
-      state.items = action.payload;
-    });
-    addCase(fetchCar.rejected, (state, action) => {
-      state.isLoadin = false;
-      state.error = action.payload;
-    });
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCars.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchCars.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload.cars;
+        state.totalCars = action.payload.totalCars;
+        state.totalPages = action.payload.totalPages;
+        state.page = action.payload.page;
+      })
+      .addCase(fetchCars.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
-export default carsSlice.reduser;
+export default carsSlice.reducer;

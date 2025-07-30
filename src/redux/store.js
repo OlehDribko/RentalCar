@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-
+import carsSlice from "./carsSlice";
 const initialState = {
   cars: { items: [] },
   filters: {
@@ -7,10 +7,8 @@ const initialState = {
   },
 };
 
-const rootReducer = (state = initialState, action) => {
-  return state;
-};
-
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    cars: carsSlice,
+  },
 });
