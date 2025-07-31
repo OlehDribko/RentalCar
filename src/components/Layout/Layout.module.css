@@ -1,0 +1,10 @@
+/* src/components/Layout/Layout.module.css */
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

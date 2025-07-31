@@ -1,0 +1,22 @@
+.carsConatiner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 0 120px 0 120px;
+}
+.carsCard {
+  flex: 1 0 calc(25% - 32px);
+  max-width: calc(25% - 32px);
+}
+.btnMore {
+  display: flex;
+  max-width: 276px;
+  padding: 12px 99px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  font-weight: 600;
+  background: #3470ff;
+  color: #fff;
+  white-space: nowrap;
+}

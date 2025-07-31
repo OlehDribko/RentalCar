@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/operations";
 
+import css from "./ListCar.module.css";
+
 export default function ListCar() {
   const dispatch = useDispatch();
   const { items, isLoading, error, totalCars, totalPages, page } = useSelector(
@@ -17,9 +19,9 @@ export default function ListCar() {
 
   return (
     <div>
-      <ul>
+      <ul className={css.carsConatiner}>
         {items.map((car) => (
-          <li key={car.id}>
+          <li className={css.carsCard} key={car.id}>
             <h3>
               {car.brand} {car.model}
             </h3>
@@ -27,9 +29,11 @@ export default function ListCar() {
             <p>
               {car.type} • {car.rentalPrice}$/день
             </p>
+            <button className={css.btnMore}>Read more</button>
           </li>
         ))}
       </ul>
+      <button>Load more</button>
       <p>
         Усього авто: {totalCars} | Сторінка {page} з {totalPages}
       </p>
