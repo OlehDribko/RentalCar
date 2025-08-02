@@ -9,10 +9,9 @@ export default function Catalog() {
     <>
       <div className={css.container}>
         <Header />
-        <Layout>
-          <FilteredForm />
-          <ListCar />
-        </Layout>
+
+        <FilteredForm />
+        <ListCar />
       </div>
     </>
   );

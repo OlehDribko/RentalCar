@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/operations";
 
 import css from "./ListCar.module.css";
+import { extractCityAndCountry } from "../../utils/extractCityAndCountry.js";
 
 export default function ListCar() {
   const dispatch = useDispatch();
@@ -18,25 +19,33 @@ export default function ListCar() {
   if (error) return <p>Помилка: {error}</p>;
 
   return (
-    <div>
+    <div className={css.carsListSectionContainer}>
       <ul className={css.carsConatiner}>
-        {items.map((car) => (
-          <li className={css.carsCard} key={car.id}>
-            <h3>
-              {car.brand} {car.model}
-            </h3>
-            <img src={car.img} alt={car.model} width={300} />
-            <p>
-              {car.type} • {car.rentalPrice}$/день
-            </p>
-            <button className={css.btnMore}>Read more</button>
-          </li>
-        ))}
+        {items.map((car) => {
+          const { city, country } = extractCityAndCountry(car.address);
+          return (
+            <li className={css.carsCard} key={car.id}>
+              <img src={car.img} alt={car.model} width={276} />
+              <h3 className={css.tileCarCardContainer}>
+                <div>
+                  {car.brand} <span className={css.carModel}>{car.model}</span>
+                </div>
+                ${car.rentalPrice}
+              </h3>
+              <ul className={css.optionsContainer}>
+                <li className={css.options}>{city}</li>
+                <li className={css.options}>{country}</li>
+                <li className={css.options}>{car.rentalCompany}</li>
+                <li className={css.options}>{car.type}</li>
+                <li className={css.optionsLastElement}>{car.mileage}km</li>
+              </ul>
+
+              <button className={css.btnMore}>Read more</button>
+            </li>
+          );
+        })}
       </ul>
-      <button>Load more</button>
-      <p>
-        Усього авто: {totalCars} | Сторінка {page} з {totalPages}
-      </p>
+      <button className={css.loadMoreBtn}>Load more</button>
     </div>
   );
 }

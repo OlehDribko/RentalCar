@@ -2,21 +2,79 @@
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
-  padding: 0 120px 0 120px;
+  padding: 0 120px;
 }
+
 .carsCard {
   flex: 1 0 calc(25% - 32px);
   max-width: calc(25% - 32px);
 }
+
 .btnMore {
   display: flex;
-  max-width: 276px;
-  padding: 12px 99px;
+  width: 100%;
+  padding: 12px;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   font-weight: 600;
   background: #3470ff;
   color: #fff;
-  white-space: nowrap;
+}
+
+.carModel {
+  color: #3470ff;
+}
+
+.tileCarCardContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 28px;
+  color: #101828;
+}
+
+.options {
+  color: #8d929a;
+}
+
+.options::after {
+  content: "|";
+  margin-left: 6px;
+  color: #8d929a;
+}
+
+.optionsLastElement {
+  color: #8d929a;
+}
+.carsListSectionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 80px;
+}
+.loadMoreBtn {
+  display: flex;
+  width: 156px;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  color: #101828;
+  background: #fff;
+  font-size: 16px;
+
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: 12px;
+  border: 1px solid #3470ff;
 }

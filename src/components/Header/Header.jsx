@@ -1,5 +1,5 @@
 import { Routes, Route, NavLink, Link } from "react-router-dom";
-import css from "./header.module.css";
+import css from "./Header.module.css";
 import logo from "../../assets/LogoRentalCar.svg";
 
 export default function Header() {
@@ -13,7 +13,6 @@ export default function Header() {
           <NavLink to="/home">Home</NavLink>
           <NavLink to="/catalog">Catalog</NavLink>
         </nav>
-       
       </div>
     </header>
   );
