@@ -35,14 +35,19 @@
 .optionsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.33;
-  margin-bottom: 28px;
+
   color: #101828;
 }
-
+.optionswraper {
+  margin-bottom: 4px;
+}
+.optionsListwraper {
+  margin-bottom: 32px;
+}
 .options {
   color: #8d929a;
 }
@@ -62,6 +67,7 @@
   align-items: center;
   flex-direction: column;
   gap: 80px;
+  margin-bottom: 124px;
 }
 .loadMoreBtn {
   display: flex;

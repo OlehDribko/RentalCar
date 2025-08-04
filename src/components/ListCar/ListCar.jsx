@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/operations";
@@ -32,14 +34,18 @@ export default function ListCar() {
                 </div>
                 ${car.rentalPrice}
               </h3>
-              <ul className={css.optionsContainer}>
-                <li className={css.options}>{city}</li>
-                <li className={css.options}>{country}</li>
-                <li className={css.options}>{car.rentalCompany}</li>
-                <li className={css.options}>{car.type}</li>
-                <li className={css.optionsLastElement}>{car.mileage}km</li>
-              </ul>
+              <div className={css.optionsListwraper}>
+                <ul className={clsx(css.optionsContainer, css.optionswraper)}>
+                  <li className={css.options}>{city}</li>
+                  <li className={css.options}>{country}</li>
+                  <li className={css.options}>{car.rentalCompany}</li>
+                </ul>
 
+                <ul className={css.optionsContainer}>
+                  <li className={css.options}>{car.type}</li>
+                  <li className={css.optionsLastElement}>{car.mileage}km</li>
+                </ul>
+              </div>
               <button className={css.btnMore}>Read more</button>
             </li>
           );

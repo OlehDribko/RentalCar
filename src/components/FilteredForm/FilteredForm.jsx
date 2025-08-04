@@ -64,21 +64,31 @@ export default function FilteredForm() {
       }}
     >
       <Form className={css.form}>
-        <CustomSelect
-          options={uniqueBrands}
-          placeholder="Choose a brand"
-          value={brand}
-          onChange={setBrand}
-        />
-        <CustomSelect
-          options={uniquePrices}
-          placeholder="Choose a price"
-          value={price}
-          onChange={setPrice}
-        />
-        <div className={css.mileageBox}>
-          <FormattedNumberField name="minMileage" label="From" />
-          <FormattedNumberField name="maxMileage" label="To" />
+        <div>
+          {" "}
+          <p className={css.inupOtions}>Car brand</p>
+          <CustomSelect
+            options={uniqueBrands}
+            placeholder="Choose a brand"
+            value={brand}
+            onChange={setBrand}
+          />
+        </div>
+        <div>
+          <p className={css.inupOtions}>Price/ 1 hour Choose a price</p>
+          <CustomSelect
+            options={uniquePrices}
+            placeholder="Choose a price"
+            value={price}
+            onChange={setPrice}
+          />
+        </div>
+        <div>
+          <p className={css.inupOtions}>Сar mileage / km</p>
+          <div className={css.mileageBox}>
+            <FormattedNumberField name="minMileage" label="From" />
+            <FormattedNumberField name="maxMileage" label="To" />
+          </div>
         </div>
 
         <button className={css.searchBtn} type="submit">
