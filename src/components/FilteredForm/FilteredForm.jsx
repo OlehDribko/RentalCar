@@ -1,9 +1,11 @@
-import { Formik, Form, useField } from "formik";
+import { Formik, Form, Field, useField } from "formik";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import css from "./FilteredForm.module.css";
 import api from "../../api/axiosInstance.js";
 import CustomSelect from "../CustomSelect/CustomSelect.jsx";
 import { formatNumber } from "../../utils/formatNumber.js";
+import { setFilters } from "../../redux/filterSlice";
 
 // КАСТОМНИЙ ІНПУТ З ФОРМАТУВАННЯМ
 function FormattedNumberField({ label, ...props }) {
@@ -32,9 +34,8 @@ function FormattedNumberField({ label, ...props }) {
 }
 
 export default function FilteredForm() {
+  const dispatch = useDispatch();
   const [cars, setCars] = useState([]);
-  const [brand, setBrand] = useState("");
-  const [price, setPrice] = useState("");
 
   useEffect(() => {
     async function fetchCars() {
@@ -60,29 +61,38 @@ export default function FilteredForm() {
         maxMileage: "",
       }}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(setFilters(values));
       }}
     >
       <Form className={css.form}>
         <div>
-          {" "}
           <p className={css.inupOtions}>Car brand</p>
-          <CustomSelect
-            options={uniqueBrands}
-            placeholder="Choose a brand"
-            value={brand}
-            onChange={setBrand}
-          />
+          <Field name="brand">
+            {({ field, form }) => (
+              <CustomSelect
+                options={uniqueBrands}
+                placeholder="Choose a brand"
+                value={field.value}
+                onChange={(value) => form.setFieldValue("brand", value)}
+              />
+            )}
+          </Field>
         </div>
+
         <div>
           <p className={css.inupOtions}>Price/ 1 hour Choose a price</p>
-          <CustomSelect
-            options={uniquePrices}
-            placeholder="Choose a price"
-            value={price}
-            onChange={setPrice}
-          />
+          <Field name="price">
+            {({ field, form }) => (
+              <CustomSelect
+                options={uniquePrices}
+                placeholder="Choose a price"
+                value={field.value}
+                onChange={(value) => form.setFieldValue("price", value)}
+              />
+            )}
+          </Field>
         </div>
+
         <div>
           <p className={css.inupOtions}>Сar mileage / km</p>
           <div className={css.mileageBox}>
@@ -90,10 +100,14 @@ export default function FilteredForm() {
             <FormattedNumberField name="maxMileage" label="To" />
           </div>
         </div>
-
-        <button className={css.searchBtn} type="submit">
-          Search
-        </button>
+        <div className={css.searchBtnCont}>
+          <p className={css.inupOtions} style={{ visibility: "hidden" }}>
+            Button
+          </p>
+          <button className={css.searchBtn} type="submit">
+            Search
+          </button>
+        </div>
       </Form>
     </Formik>
   );

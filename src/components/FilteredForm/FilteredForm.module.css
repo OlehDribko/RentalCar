@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 16px;
   padding: 0 120px;
   margin-top: 84px;
@@ -81,7 +82,12 @@
 .select option:first-child {
   color: #8a8a89;
 }
-
+.searchBtnCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
 .searchBtn {
   display: flex;
   width: 156px;
@@ -91,4 +97,5 @@
   border-radius: 12px;
   background: #3470ff;
   color: #fff;
+  margin-top: auto;
 }

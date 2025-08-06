@@ -12,7 +12,18 @@ export default function ListCar() {
   const { items, isLoading, error, totalCars, totalPages, page } = useSelector(
     (state) => state.cars
   );
+  const filters = useSelector((state) => state.filters);
+  const filteredCars = items.filter((car) => {
+    const { brand, price, minMileage, maxMileage } = filters;
+    const matchesBrand = !brand || car.brand === brand;
+    const matchesPrice = !price || car.rentalPrice === price;
 
+    const mileage = Number(car.mileage);
+    const matchesMin = !minMileage || mileage >= Number(minMileage);
+    const matchesMax = !maxMileage || mileage <= Number(maxMileage);
+
+    return matchesBrand && matchesPrice && matchesMin && matchesMax;
+  });
   useEffect(() => {
     dispatch(fetchCars({ page: 1 }));
   }, [dispatch]);
@@ -23,7 +34,7 @@ export default function ListCar() {
   return (
     <div className={css.carsListSectionContainer}>
       <ul className={css.carsConatiner}>
-        {items.map((car) => {
+        {filteredCars.map((car) => {
           const { city, country } = extractCityAndCountry(car.address);
           return (
             <li className={css.carsCard} key={car.id}>
