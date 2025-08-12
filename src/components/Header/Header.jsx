@@ -10,8 +10,22 @@ export default function Header() {
           <img src={logo} alt="RentCar logo" />
         </Link>
         <nav className={css.navigation}>
-          <NavLink to="/home">Home</NavLink>
-          <NavLink to="/catalog">Catalog</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? `${css.link} ${css.isActive}` : css.link
+            }
+            to="/home"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? `${css.link} ${css.isActive}` : css.link
+            }
+            to="/catalog"
+          >
+            Catalog
+          </NavLink>
         </nav>
       </div>
     </header>

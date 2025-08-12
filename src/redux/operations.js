@@ -5,12 +5,12 @@ axios.defaults.baseURL = "https://car-rental-api.goit.global/";
 
 export const fetchCars = createAsyncThunk(
   "cars/fetchAll",
-  async ({ params = {} }, thinkApi) => {
+  async ({ params = {} } = {}, { rejectWithValue }) => {
     try {
-      const response = await axios.get("/cars", { params });
-      return response.data;
-    } catch (error) {
-      return thinkApi.rejectWithValue(error.message);
+      const { data } = await axios.get("/cars", { params });
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data?.message || err.message);
     }
   }
 );

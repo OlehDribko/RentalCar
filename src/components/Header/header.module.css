@@ -20,13 +20,6 @@
   display: flex;
   gap: 32px;
 }
-
-/* color: var(--button-hover, #0B44CD);
-text-align: center;
-
-/* body */
-/* font-family: Manrope;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 20px; 125% */
+.isActive {
+  color: #0b44cd;
+}

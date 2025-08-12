@@ -6,6 +6,7 @@
 }
 
 .carsCard {
+  position: relative;
   flex: 1 0 calc(25% - 32px);
   min-width: 276px;
   max-width: calc(25% - 32px);
@@ -87,4 +88,16 @@
   line-height: 1.25;
   border-radius: 12px;
   border: 1px solid #3470ff;
+}
+.favoriteIconBtn {
+  background-color: transparent;
+}
+.favoriteIcon {
+  fill: #fff;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  border: none;
+  cursor: pointer;
 }
