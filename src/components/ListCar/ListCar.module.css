@@ -101,3 +101,8 @@
   border: none;
   cursor: pointer;
 }
+.brandContainer {
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 15px;
+}

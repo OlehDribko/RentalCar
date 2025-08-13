@@ -5,6 +5,7 @@ import "./App.css";
 
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import Catalog from "./pages/Catalog/Catalog.jsx";
+import CarDetailsPage from "./pages/CarDetailsPage/CarDetailsPage.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog:id" element={<CarDetailsPage />} />
       </Routes>
       <div className="main-container"></div>
     </>

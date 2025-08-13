@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/operations";
+import { Link } from "react-router-dom";
 
 import {
   toggleFavorite,
@@ -53,7 +54,7 @@ export default function ListCar() {
             <li className={css.carsCard} key={car.id}>
               <img src={car.img} alt={car.model} width={276} />
               <h3 className={css.tileCarCardContainer}>
-                <span>
+                <span className={css.brandContainer}>
                   {car.brand} <span className={css.carModel}>{car.model}</span>
                 </span>
                 ${car.rentalPrice}
@@ -71,8 +72,13 @@ export default function ListCar() {
                   <li className={css.optionsLastElement}>{car.mileage}km</li>
                 </ul>
               </div>
-
-              <button className={css.btnMore}>Read more</button>
+              <Link
+                className={css.btnMore}
+                to={`/catalog/${encodeURIComponent(car.id)}`}
+                state={{ car }}
+              >
+                Read more
+              </Link>
               <button
                 type="button"
                 className={css.favoriteIconBtn}
