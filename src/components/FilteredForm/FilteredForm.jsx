@@ -66,10 +66,13 @@ export default function FilteredForm() {
     >
       <Form className={css.form}>
         <div>
-          <p className={css.inupOtions}>Car brand</p>
+          <label id="brand-label" htmlFor="brand" className={css.inupOtions}>
+            Car brand
+          </label>
           <Field name="brand">
             {({ field, form }) => (
               <CustomSelect
+                id="brand"
                 options={uniqueBrands}
                 placeholder="Choose a brand"
                 value={field.value}
@@ -80,10 +83,13 @@ export default function FilteredForm() {
         </div>
 
         <div>
-          <p className={css.inupOtions}>Price/ 1 hour Choose a price</p>
+          <label id="price" htmlFor="price" className={css.inupOtions}>
+            Price/ 1 hour Choose a price
+          </label>
           <Field name="price">
             {({ field, form }) => (
               <CustomSelect
+                id="price"
                 options={uniquePrices}
                 placeholder="Choose a price"
                 value={field.value}

@@ -1,26 +1,37 @@
 import { useState } from "react";
 import css from "./CustomSelect.module.css";
 import arrowIcon from "../../assets/chevron.svg";
+
 export default function CustomSelect({
-  options,
+  id,
+  options = [],
   placeholder,
   value,
   onChange,
+  onBlur,
+  ariaLabelledby,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option) => {
     onChange(option);
     setIsOpen(false);
+    onBlur && onBlur();
   };
 
   return (
     <div className={css.wrapper}>
-      {/* Head */}
-      <div className={css.header} onClick={() => setIsOpen((prev) => !prev)}>
+      <button
+        id={id}
+        type="button"
+        className={css.header}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
         <span>
           {value
-            ? `${placeholder.includes("price") ? "To $" + value : value}`
+            ? placeholder?.toLowerCase().includes("price")
+              ? `To $${value}`
+              : value
             : placeholder}
         </span>
         <img
@@ -28,14 +39,14 @@ export default function CustomSelect({
           alt="arrow"
           className={`${css.arrow} ${isOpen ? css.open : ""}`}
         />
-      </div>
+      </button>
 
-      {/* Drop */}
+      {/* Дропдаун */}
       {isOpen && (
         <ul className={css.list}>
           {options.map((option) => (
             <li
-              key={option}
+              key={String(option)}
               className={css.item}
               onClick={() => handleSelect(option)}
             >

@@ -17,6 +17,10 @@
   color: #1c1c1c;
   cursor: pointer;
   user-select: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .arrow {

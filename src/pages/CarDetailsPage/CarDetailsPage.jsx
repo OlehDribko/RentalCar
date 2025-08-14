@@ -1,8 +1,13 @@
-function CarDetailsPage(params) {
+import CardCar from "../../components/CardCar/CardCar";
+import Header from "../../components/Header/Header";
 
-    return (
-        <></>
-    )
+function CarDetailsPage(params) {
+  return (
+    <>
+      <Header />
+      <CardCar />
+    </>
+  );
 }
 
 export default CarDetailsPage;
